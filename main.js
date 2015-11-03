@@ -16,8 +16,6 @@ var main ={
         name: "cglane",
         avatar: "http://31.media.tumblr.com/fffd0f8677c5f75e47bfbaa9a17c44e9/tumblr_neyjbn8JGm1texwuzo1_400.gif",
         status: "online",
-        sign: "virgo",
-
       },
 
 
@@ -32,7 +30,21 @@ var main ={
 
     events:function(){
       main.grabMessages();
+      $('body').on('click', 'button',function(e) {
+        e.preventDefault();
+        var messageText = $(this).siblings('input[name="message"]').val();
+        var data ={
+          username: "cglane",
+          message: messageText,
+          avatar: "http://31.media.tumblr.com/fffd0f8677c5f75e47bfbaa9a17c44e9/tumblr_neyjbn8JGm1texwuzo1_400.gif",
+        };
+        main.postMessage(data);
+        var tmpl = _.template(templates.userInput);
+        $('.chatfield').append(tmpl(data));
+        console.log("hello World");
+      });
     },
+
   loadMessages:function(data){
 
     var html = "";
@@ -96,7 +108,7 @@ grabUsers:function(){
     success: function(resp) {
       console.log(resp);
       var tmpl = _.template(templates.userInput);
-      $('.chatfield').append(templ(resp));
+      $('.chatfield').append(tmpl(resp));
     },
     failure: function(resp) {
       console.log("FAILURE", resp);
@@ -123,7 +135,7 @@ deleteMessages: function(messageId) {
     url: main.urlMessages + messageId,
     success: function(data) {
       console.log("DELETED", data);
-      var id = # + messageId;
+      var id = '#' + messageId;
       $('id').remove();
     },
     failure: function(data) {
