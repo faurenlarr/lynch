@@ -1,0 +1,22 @@
+{
+  "name": "lynch",
+  "homepage": "https://github.com/bdjones2410/lynch",
+  "authors": [
+    "Brandon Jones <bdjones2410@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "underscore": "~1.8.3"
+  }
+}
