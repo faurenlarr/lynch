@@ -14,6 +14,10 @@
   background-color: black;
   height: 20px; }
 
+.username {
+  background-color: orange;
+  min-height: 500px; }
+
 .usermessage {
-  background-color: white;
+  background-color: pink;
   min-height: 500px; }
