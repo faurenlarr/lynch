@@ -1,6 +1,6 @@
 // this section is used to define templates inside this array.
 
-var templates =[
+var templates ={
   templateExample:[
     'a cool example of stuff',
     'containing html like <h3></h3>',
@@ -8,4 +8,4 @@ var templates =[
     'do this<h1><%=name%></h1>',
   ].join(""),
 
-]
+};
