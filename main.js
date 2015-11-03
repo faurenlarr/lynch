@@ -13,7 +13,7 @@ var main ={
 
     },
       users:{
-        "name": "cglane",
+        name: "cglane",
         avatar: "http://31.media.tumblr.com/fffd0f8677c5f75e47bfbaa9a17c44e9/tumblr_neyjbn8JGm1texwuzo1_400.gif",
         status: "online",
         sign: "virgo",
@@ -88,13 +88,15 @@ grabUsers:function(){
       });
   },
 
-  postMessage: function(bitter) {
+  postMessage: function(message) {
   $.ajax({
     url: main.urlMessages,
     method: 'POST',
-    data: bitter,
+    data: message,
     success: function(resp) {
       console.log(resp);
+      var tmpl = _.template(templates.userInput);
+      $('.chatfield').append(templ(resp));
     },
     failure: function(resp) {
       console.log("FAILURE", resp);
@@ -115,12 +117,14 @@ grabMessages: function() {
   });
 },
 
-deleteInSpace: function(messageId) {
+deleteMessages: function(messageId) {
   $.ajax({
     method: 'DELETE',
     url: main.urlMessages + messageId,
     success: function(data) {
       console.log("DELETED", data);
+      var id = # + messageId;
+      $('id').remove();
     },
     failure: function(data) {
       console.log("ERROR", data);
