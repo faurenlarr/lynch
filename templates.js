@@ -11,7 +11,7 @@ var templates ={
 
   userInput:[
     '<div class="col-md-12 generatedChat">',
-    '<div class="col-md-3 username">',
+    '<div class="col-md-2 username">',
     '<div class="col-md-12 userImg">',
     '<img src="<%=avatar%>" alt="">',
     '</div>',
@@ -19,7 +19,7 @@ var templates ={
     '<%=username%>',
     '</div>',
     '</div>',
-    '<div class="col-md-9 usermessage">',
+    '<div class="col-md-10 usermessage">',
     '<%=message%>',
     '</div>',
     '</div>',
