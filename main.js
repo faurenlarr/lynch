@@ -34,10 +34,15 @@ var main ={
       main.grabMessages();
     },
   loadMessages:function(data){
+
+    var html = "";
     var tmpl = _.template(templates.userInput);
-    $('.chatfield').prepend(tmpl(data[0]));
-    console.log("hello");
+    _.each(data, function(el){
+    html += tmpl(el);
+  });
+    $('.chatfield').html(html);
   },
+
   loadUsers:function(data){
     var tmpl = _.templates(templates.messageTemplate);
     $('aside .users').append(tmpl(data));
