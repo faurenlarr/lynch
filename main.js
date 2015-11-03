@@ -31,23 +31,66 @@ var main ={
     },
 
     events:function(){
-      main.postMessage(main.message);
+      main.grabMessages();
       // main.deleteInSpace("56391d8e3802890300842c6e");
     },
-  loadMessages:function(){
-
+  loadMessages:function(data){
+    var tmpl = _.template(templates.messageTemplate);
+    $('.chatfield').append(tmpl(data));
+    console.log(data);
+  },
+  loadUsers:function(data){
+    var tmpl = _.templates(templates.messageTemplate);
+    $('aside .users').append(tmpl(data));
+    console.log(data);
   },
 
 
+grabUsers:function(){
+    $.ajax({
+      url:main.urlUsers,
+      method:'GET',
+      success:function(users){
+        console.log(users);
+        main.loadUsers(users);
+      }
+    });
+},
+  postUsers:function(user){
+    $.ajax({
+      url:main.urlUsers,
+      method:'POST',
+      data: user,
+      success:function(data){
+        console.log(data);
+      },
+      failure:function(data){
+        console.log("You are a failure" + data);
+      }
+    });
+  },
+  deletUsers:function(userId){
+      $.ajax({
+        url:main.urlUsers + userId,
+        method: 'DELETE',
+        success:function(){
+          console.log(data + "deleted");
+
+        },
+        failure:function(){
+          console.log(data+ " :not deleted, idiot");
+        }
+
+      });
+  },
+
   postMessage: function(bitter) {
   $.ajax({
-    url: main.url,
+    url: main.urlMessages,
     method: 'POST',
     data: bitter,
     success: function(resp) {
       console.log(resp);
-      var tmpl = _.templates(templates.messages);
-      $('.usermessage').tmpl(resp);
     },
     failure: function(resp) {
       console.log("FAILURE", resp);
@@ -57,7 +100,7 @@ var main ={
 grabMessages: function() {
   $.ajax({
     type: 'GET',
-    url: bitterPage.url,
+    url: main.urlMessages,
     success: function(data) {
       main.loadMessages(data);
     },
@@ -70,7 +113,7 @@ grabMessages: function() {
 deleteInSpace: function(messageId) {
   $.ajax({
     method: 'DELETE',
-    url: main.url + messageId,
+    url: main.urlMessages + messageId,
     success: function(data) {
       console.log("DELETED", data);
     },

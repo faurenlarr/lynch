@@ -14,22 +14,17 @@
       <div class="col-md-8 chatbox">
 
 
-        <div class="col-md-12">
-           <div class="col-md-2 username">
-             user who submitted:
-           </div>
-           <div class="col-md-10 usermessage">
-             message they wrote
-           </div>
+              <div class="col-md-12 chatfield">
 
-        </div>
 
-        <div class="col-md-8 textbox">
-          <input type="text" class="message" name="message" placeholder=" message here">
-          <button type="submit" class="submit" name="submit">Submit</button>
-        </div>
-
+                
+              </div>
+              <div class="col-md-12 textbox">
+                  <input type="text" class="message" name="message" placeholder=" message here">
+                  <button type="submit" class="submit" name="submit">Submit</button>
+              </div>
       </div>
+
       <aside class="col-md-4 users"></aside>
     </div>
 
@@ -47,3 +42,8 @@
     <script src="main.js" charset="utf-8"></script>
   </body>
 </html>
+<div class="message">
+  <p><%= message%></p>
+  <p><%= username%></p>
+  <img src="<%= avatar%>" alt="" />
+</div>
