@@ -18,7 +18,7 @@
 
 .textbox {
   background-color: black;
-  height: 20px;
+  padding:2px;
 }
 .username {
   background-color: orange;
@@ -28,5 +28,20 @@
 .usermessage {
   background-color: pink;
 
+}
+.userid {
+    text-align:center;
+}
+.userImg {
+  img{
+    max-width:100%;
+    border-radius:10px;
+  }
+}
 
+.message{
+  width:85%;
+}
+.subbut{
+  width:13%;
 }
