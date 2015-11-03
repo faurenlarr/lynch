@@ -35,10 +35,14 @@ var main ={
       // main.deleteInSpace("56391d8e3802890300842c6e");
     },
   loadMessages:function(data){
-    var tmpl = _.template(templates.messageTemplate);
-    $('.chatfield').append(tmpl(data));
-    console.log(data);
+    var html = ""
+    var tmpl = _.template(templates.userInput);
+    _.each(data, function(el){
+    html += tmpl(el);
+  });
+    $('.chatfield').html(html);
   },
+
   loadUsers:function(data){
     var tmpl = _.templates(templates.messageTemplate);
     $('aside .users').append(tmpl(data));
