@@ -34,6 +34,7 @@ var main ={
       main.grabMessages();
       // main.deleteInSpace("56391d8e3802890300842c6e");
     },
+<<<<<<< HEAD
   loadMessages:function(data){
     var tmpl = _.template(templates.messageTemplate);
     $('.chatfield').append(tmpl(data));
@@ -44,6 +45,10 @@ var main ={
     $('aside .users').append(tmpl(data));
     console.log(data);
   },
+=======
+    loadMessages:($el, data, tmpl){
+
+>>>>>>> 56c00b73fa89474d944b0c1687fb4814d66bbac7
 
 grabUsers:function(){
     $.ajax({
@@ -80,8 +85,12 @@ grabUsers:function(){
           console.log(data+ " :not deleted, idiot");
         }
 
+<<<<<<< HEAD
       });
   },
+=======
+
+>>>>>>> 56c00b73fa89474d944b0c1687fb4814d66bbac7
   postMessage: function(bitter) {
   $.ajax({
     url: main.urlMessages,
