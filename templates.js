@@ -13,7 +13,7 @@ var templates ={
     '<div class="col-md-12 generatedChat">',
     '<div class="col-md-3 username">',
     '<div class="col-md-12 userImg">',
-    '<img src="<%=avatar%>" alt="">',
+    '<img src="<%= avatar%>" alt="">',
     '</div>',
     '<div class="col-md-12 userid">',
     '<%=username%>',

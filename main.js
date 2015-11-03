@@ -13,7 +13,7 @@ var main ={
 
     },
       users:{
-        name: "cglane",
+        "name": "cglane",
         avatar: "http://31.media.tumblr.com/fffd0f8677c5f75e47bfbaa9a17c44e9/tumblr_neyjbn8JGm1texwuzo1_400.gif",
         status: "online",
         sign: "virgo",
@@ -32,12 +32,11 @@ var main ={
 
     events:function(){
       main.grabMessages();
-      // main.deleteInSpace("56391d8e3802890300842c6e");
     },
   loadMessages:function(data){
-    var tmpl = _.template(templates.messageTemplate);
-    $('.chatfield').append(tmpl(data));
-    console.log(data);
+    var tmpl = _.template(templates.userInput);
+    $('.chatfield').prepend(tmpl(data[0]));
+    console.log("hello");
   },
   loadUsers:function(data){
     var tmpl = _.templates(templates.messageTemplate);
@@ -102,6 +101,7 @@ grabMessages: function() {
     type: 'GET',
     url: main.urlMessages,
     success: function(data) {
+      console.log(data);
       main.loadMessages(data);
     },
     failure: function(data) {
