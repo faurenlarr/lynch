@@ -37,7 +37,7 @@ var main ={
   loadMessages:function(){
 
   },
-  
+
 
   postMessage: function(bitter) {
   $.ajax({
@@ -46,6 +46,8 @@ var main ={
     data: bitter,
     success: function(resp) {
       console.log(resp);
+      var tmpl = _.templates(templates.messages);
+      $('.usermessage').tmpl(resp);
     },
     failure: function(resp) {
       console.log("FAILURE", resp);
