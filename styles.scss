@@ -11,9 +11,7 @@
 .chatbox {
   background-color: white;
   min-height: 500px;
-  .chatfield{
-    min-height:500px;
-  }
+
 }
 
 .textbox {
@@ -22,11 +20,11 @@
 }
 .username {
   background-color: orange;
-
+  min-height: 500px;
 }
 
 .usermessage {
   background-color: pink;
-
+  min-height: 500px;
 
 }

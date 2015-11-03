@@ -9,14 +9,14 @@
 .chatbox {
   background-color: white;
   min-height: 500px; }
-  .chatbox .chatfield {
-    min-height: 500px; }
 
 .textbox {
   height: 20px; }
 
 .username {
-  background-color: orange; }
+  background-color: orange;
+  min-height: 500px; }
 
 .usermessage {
-  background-color: pink; }
+  background-color: pink;
+  min-height: 500px; }
