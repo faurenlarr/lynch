@@ -1,0 +1,19 @@
+.container {
+  margin-top: 50px;
+  border: 2px solid black; }
+
+.users {
+  background-color: yellow;
+  min-height: 500px; }
+
+.chatbox {
+  background-color: violet;
+  min-height: 500px; }
+
+.textbox {
+  background-color: black;
+  height: 20px; }
+
+.usermessage {
+  background-color: white;
+  min-height: 500px; }
