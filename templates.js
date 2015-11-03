@@ -2,12 +2,7 @@
 
 var templates ={
 
-  templateExample:[
-    'a cool example of stuff',
-    'containing html like <h3></h3>',
-    'and if you want your variables',
-    'do this<h1><%=name%></h1>',
-  ].join(""),
+//append to .chatfield ////
 
   userInput:[
     '<div class="col-md-12 generatedChat">',
@@ -23,6 +18,14 @@ var templates ={
     '<%=message%>',
     '</div>',
     '</div>',
-  ].join("")
+  ].join(""),
+
+
+//append to .curOnline ///
+  activeUser: [
+    '<div class="activeUsers">',
+    '<%=username%=>',
+    '</div>',
+  ].join(""),
 
 };
