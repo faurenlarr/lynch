@@ -34,3 +34,12 @@
 
 .subbut {
   width: 13%; }
+
+aside {
+  text-align: center; }
+  aside .online {
+    border-bottom: 1px solid black; }
+
+.activeUsers {
+  margin-top: 5px;
+  font-size: 1.2em; }
