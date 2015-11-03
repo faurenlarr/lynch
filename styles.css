@@ -9,15 +9,15 @@
 .chatbox {
   background-color: violet;
   min-height: 500px; }
+  .chatbox .chatfield {
+    min-height: 500px; }
 
 .textbox {
   background-color: black;
   height: 20px; }
 
 .username {
-  background-color: orange;
-  min-height: 500px; }
+  background-color: orange; }
 
 .usermessage {
-  background-color: pink;
-  min-height: 500px; }
+  background-color: pink; }

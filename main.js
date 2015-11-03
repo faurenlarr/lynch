@@ -34,9 +34,11 @@ var main ={
       main.postMessage(main.message);
       // main.deleteInSpace("56391d8e3802890300842c6e");
     },
-  loadMessages:function(){
+    loadMessages:($el, data, tmpl){
+
 
   },
+
 
 
   postMessage: function(bitter) {
