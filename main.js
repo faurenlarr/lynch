@@ -63,7 +63,7 @@ var main ={
 
   loadUsers:function(data){
     var tmpl = _.templates(templates.messageTemplate);
-    $('aside.users').append(tmpl(data));
+    $('aside .users').append(tmpl(data));
     console.log(data);
   },
 
