@@ -60,7 +60,8 @@ aside {
   background-color: #f9f2E6;
   height: 200px;
   width: 400px;
-  margin: 15% auto; }
+  margin: 15% auto;
+  padding-top: 30px; }
 
 .signInSubmit {
   margin-left: 41%; }
@@ -69,12 +70,12 @@ aside {
   display: block;
   margin: 2% auto;
   padding: 2%; }
+
 =======
+>>>>>>> 4d352b55a494d351a2dd751b44ac9407d3496110
 .usermessage {
   background-color: white;
-  border-radius: 10px;
-  width: auto; }
+  border-radius: 10px; }
 
 .offline {
   margin-top: 268px; }
->>>>>>> 00b80c6a0be0d31a8a35ba4df50693bf0843f917
