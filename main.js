@@ -49,7 +49,14 @@ var main ={
            $('button').click();//Trigger search button click event
        }
    });
+   $('.signInSubmit').on('click', function(){
+     $('.page1').addClass('hidden');
+     $('.container').removeClass('hidden');
+
+   })
     },
+
+
 
   loadMessages:function(data){
 

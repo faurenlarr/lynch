@@ -9,12 +9,21 @@
     <title>Messaging Application</title>
   </head>
   <body>
-<section class="container">
+<section class="page1">
+
+  <div class="signIn">
+    <input type="text" class="username" name="username" placeholder="Username here">
+    <input type="text" class="avatar" name="avatar" placeholder="Avatar here">
+    <button type="submit" class="signInSubmit btn btn-primary subbut" name="submit">Submit</button>
+  </div>
+
+</section>
+<section class="container hidden">
     <div class="row">
       <div class="col-md-8 chatbox">
 
 
-        <div class="col-md-12 chatfield hidden">
+        <div class="col-md-12 chatfield">
            <div class="col-md-2 username">
              user who submitted:
            </div>
@@ -25,15 +34,11 @@
         </div>
 
       </div>
-              <div class="col-md-12 textbox hidden">
+              <div class="col-md-12 textbox">
                   <input type="text" class="message" name="message" placeholder=" message here">
                   <button type="submit" class="submit btn btn-primary subbut" name="submit">Submit</button>
               </div>
-              <div class="col-md-12 paywall">
-                  <input type="text" class="username" name="username" placeholder="Username here">
-                  <input type="text" class="avatar" name="avatar" placeholder="Avatar here">
-                  <button type="submit" class="submit btn btn-primary subbut" name="submit">Submit</button>
-              </div>
+
         </div>
 
       <aside class="col-md-4 users">

@@ -79,3 +79,16 @@ aside{
   margin-top:5px;
   font-size:1.2em;
 }
+.signIn {
+  border-radius: 20px;
+  background-color: #f9f2E6;
+  height: 200px;
+  width: 400px;
+  margin: 15% auto;
+}
+
+.username, .avatar, .submit {
+  display: block;
+  margin: 2% auto;
+  padding: 2%;
+}
