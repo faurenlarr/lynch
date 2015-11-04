@@ -7,7 +7,7 @@ var main ={
      urlMessages: "https://tiny-tiny.herokuapp.com/collections/lynch/",
      urlUsers:"https://tiny-tiny.herokuapp.com/collections/lynchUsers/",
      message:{
-        username: "cglane",
+        username: "joshguion",
         message: "hello, world",
         avatar: "http://31.media.tumblr.com/fffd0f8677c5f75e47bfbaa9a17c44e9/tumblr_neyjbn8JGm1texwuzo1_400.gif",
 
@@ -44,17 +44,22 @@ var main ={
         console.log("hello World");
         $(this).siblings('input[name="message"]').val(' ');
       });
-      $('.textbox').keypress('inpput',function(e){
+      $('.textbox').keypress('input',function(e){
        if(e.which == 13){//Enter key pressed
            $('button').click();//Trigger search button click event
        }
-   });
-   $('.signInSubmit').on('click', function(){
-     $('.page1').addClass('hidden');
-     $('.container').removeClass('hidden');
+      });
 
-   })
-    },
+      $('section').on('click', '.signInSubmit', function(e) {
+        e.preventDefault();
+        $('.page1').addClass('hidden');
+        $('.container').removeClass('hidden');
+        var userEntry = $(this).siblings('input[name="username"]').val();
+        var avatarEntry = $(this).siblings('input[name="avatar"]').val();
+      });
+   },
+
+
 
 
 

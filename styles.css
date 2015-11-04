@@ -22,6 +22,9 @@ body {
     height: 500px;
     overflow: scroll; }
 
+.hidden {
+  display: none; }
+
 .textbox {
   padding: 2px; }
 
@@ -56,6 +59,9 @@ aside {
   height: 200px;
   width: 400px;
   margin: 15% auto; }
+
+.signInSubmit {
+  margin-left: 41%; }
 
 .username, .avatar, .submit {
   display: block;
