@@ -29,7 +29,7 @@ var main ={
 
     events:function(){
       main.grabMessages();
-
+      // Edit.events ();
       $('.textbox').on('click', '.subbut',function(e) {
         e.preventDefault();
         var messageText = $(this).siblings('input[name="message"]').val();
