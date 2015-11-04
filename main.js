@@ -4,19 +4,8 @@ $(document).ready(function() {
 
 
 var main ={
-     urlMessages: "https://tiny-tiny.herokuapp.com/collections/lynch/",
-     urlUsers:"https://tiny-tiny.herokuapp.com/collections/lynchUsers/",
-     message:{
-        username: "joshguion",
-        message: "hello, world",
-        avatar: "http://31.media.tumblr.com/fffd0f8677c5f75e47bfbaa9a17c44e9/tumblr_neyjbn8JGm1texwuzo1_400.gif",
-
-    },
-      users:{
-        name: "cglane",
-        avatar: "http://31.media.tumblr.com/fffd0f8677c5f75e47bfbaa9a17c44e9/tumblr_neyjbn8JGm1texwuzo1_400.gif",
-        status: "online",
-      },
+     urlMessages: "https://tiny-tiny.herokuapp.com/collections/lynchberg/",
+    //  urlUsers:"https://tiny-tiny.herokuapp.com/collections/lynchUsers/",
 
 
     init:function() {
@@ -25,12 +14,13 @@ var main ={
     },
 
     styling: function(){
+      main.grabMessages();
+
     },
 
     events:function(){
-      main.grabMessages();
 
-      $('body').on('click', 'button',function(e) {
+    $('.textbox').on('click', '.subbut',function(e) {
         e.preventDefault();
         var messageText = $(this).siblings('input[name="message"]').val();
         var data ={
@@ -39,8 +29,6 @@ var main ={
           avatar: "http://31.media.tumblr.com/fffd0f8677c5f75e47bfbaa9a17c44e9/tumblr_neyjbn8JGm1texwuzo1_400.gif",
         };
         main.postMessage(data);
-        $('.generatedChat').remove();
-        main.grabMessages();
         console.log("hello World");
         $(this).siblings('input[name="message"]').val(' ');
       });
@@ -68,7 +56,8 @@ var main ={
     var html = "";
     var tmpl = _.template(templates.userInput);
     _.each(data, function(el){
-    html += tmpl(el);
+      console.log(el);
+      html += tmpl(el);
   });
     $('.chatfield').html(html);
   },
