@@ -12,14 +12,15 @@ body {
   height: 550px;
   border-radius: 20px;
   width: 25%;
-  margin-left: 20px; }
+  margin-left: 20px;
+  overflow: scroll; }
 
 .chatbox {
   background-color: #f9f2e6;
   min-height: 550px;
   border-radius: 20px; }
   .chatbox .chatfield {
-    max-height: 500px;
+    height: 500px;
     overflow: scroll; }
 
 .textbox {
@@ -49,3 +50,11 @@ aside {
 .activeUsers {
   margin-top: 5px;
   font-size: 1.2em; }
+
+.usermessage {
+  background-color: white;
+  border-radius: 10px;
+  width: auto; }
+
+.offline {
+  margin-top: 268px; }
