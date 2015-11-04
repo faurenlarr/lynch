@@ -5,7 +5,7 @@ $(document).ready(function() {
 
 var main ={
      urlMessages: "https://tiny-tiny.herokuapp.com/collections/lynchberg/",
-    //  urlUsers:"https://tiny-tiny.herokuapp.com/collections/lynchUsers/",
+     urlUsers:"https://tiny-tiny.herokuapp.com/collections/lynchUser/",
 
 
     init:function() {
@@ -15,17 +15,20 @@ var main ={
 
     styling: function(){
       main.grabMessages();
+      main.grabUsers();
 
     },
 
     events:function(){
+      //paywall enter button
 
+    //message enter button
     $('.textbox').on('click', '.subbut',function(e) {
 
         e.preventDefault();
         var messageText = $(this).siblings('input[name="message"]').val();
         var data ={
-          username: "lauren",
+          username: "cglane",
           message: messageText,
           avatar: "http://31.media.tumblr.com/fffd0f8677c5f75e47bfbaa9a17c44e9/tumblr_neyjbn8JGm1texwuzo1_400.gif",
         };
@@ -33,9 +36,9 @@ var main ={
 
         $(this).siblings('input[name="message"]').val(' ');
       });
-      $('.textbox').keypress('.message',function(e){
+      $('body').keypress(function(e){
        if(e.which == 13){//Enter key pressed
-           $('.message').click();//Trigger search button click event
+           $('.subbut').click();//Trigger search button click event
        }
      });
      $('.chatbox').on('click','.delete-button',function(){
@@ -46,11 +49,18 @@ var main ={
 
       $('section').on('click', '.signInSubmit', function(e) {
         e.preventDefault();
-        $('.page1').addClass('hidden');
-        $('.container').removeClass('hidden');
         var userEntry = $(this).siblings('input[name="username"]').val();
         var avatarEntry = $(this).siblings('input[name="avatar"]').val();
-      });
+        var user = {
+          username : userEntry,
+          avatar : avatarEntry
+        };
+
+        main.postUsers(user);
+        console.log(user);
+        $('.page1').addClass('hidden');
+        $('.container').removeClass('hidden');
+            });
    },
 
 
@@ -69,7 +79,7 @@ var main ={
   },
 
   loadUsers:function(data){
-    var tmpl = _.templates(templates.messageTemplate);
+    var tmpl = _.templates(templates.activeUsers);
     $('aside .users').append(tmpl(data));
     console.log(data);
   },
@@ -84,6 +94,11 @@ grabUsers:function(){
         main.loadUsers(users);
       }
     });
+},
+checkUsers:function(){
+  $.ajax({
+
+  });
 },
   postUsers:function(user){
     $.ajax({
