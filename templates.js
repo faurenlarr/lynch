@@ -17,7 +17,7 @@ var templates ={
     '<div class="col-md-10 usermessage">',
     '<%=message%>',
     '</div>',
-    '<button type="button" name="delete">Delete</button>',
+    '<button class = "delete-button" type="button" name="delete">Delete</button>',
     '</div>',
   ].join(""),
 

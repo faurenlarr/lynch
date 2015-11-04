@@ -33,17 +33,16 @@ var main ={
 
         $(this).siblings('input[name="message"]').val(' ');
       });
-      $('.textbox').keypress('input',function(e){
+      $('.textbox').keypress('.message',function(e){
        if(e.which == 13){//Enter key pressed
-           $('button').click();//Trigger search button click event
+           $('.message').click();//Trigger search button click event
        }
-     });;
-     $('.chatbox').on('click','button',function(){
+     });
+     $('.chatbox').on('click','.delete-button',function(){
        var id = $(this).parent('div').attr('id');
        main.deleteMessages(id);
      });
-    },
-      });
+
 
       $('section').on('click', '.signInSubmit', function(e) {
         e.preventDefault();
@@ -59,7 +58,7 @@ var main ={
 
 
   loadMessages:function(data){
-
+    var html = " ";
     var tmpl = _.template(templates.userInput);
     _.each(data, function(el){
       console.log(el);
