@@ -28,7 +28,7 @@ var main ={
     },
 
     events:function(){
-      main.grabMessages();
+
 
       $('body').on('click', 'button',function(e) {
         e.preventDefault();
@@ -39,8 +39,9 @@ var main ={
           avatar: "http://31.media.tumblr.com/fffd0f8677c5f75e47bfbaa9a17c44e9/tumblr_neyjbn8JGm1texwuzo1_400.gif",
         };
         main.postMessage(data);
-        $('.generatedChat').remove();
-        main.grabMessages();
+        // $('.generatedChat').remove();
+        // main.grabMessages();
+
         console.log("hello World");
         $(this).siblings('input[name="message"]').val(' ');
       });
@@ -49,21 +50,24 @@ var main ={
            $('button').click();//Trigger search button click event
        }
    });
+         main.grabMessages();
     },
 
   loadMessages:function(data){
 
-    var html = "";
+    console.log("loadMessages data: "+ data);
     var tmpl = _.template(templates.userInput);
+    console.log(tmpl);
     _.each(data, function(el){
-    html += tmpl(el);
+
+    $('.chatfield').append(tmpl(el));
+
   });
-    $('.chatfield').html(html);
   },
 
   loadUsers:function(data){
-    var tmpl = _.templates(templates.messageTemplate);
-    $('aside .users').append(tmpl(data));
+    var tmpl = _.template(templates.messageTemplate);
+    $('.curOnline').append(tmpl(data));
     console.log(data);
   },
 
@@ -108,7 +112,7 @@ grabUsers:function(){
 
   postMessage: function(message) {
   $.ajax({
-    url: main.urlMessages,
+    url: main.urlUsers,
     method: 'POST',
     data: message,
     success: function(resp) {
@@ -127,6 +131,7 @@ grabMessages: function() {
     url: main.urlMessages,
     success: function(data) {
       console.log(data);
+
       main.loadMessages(data);
     },
     failure: function(data) {

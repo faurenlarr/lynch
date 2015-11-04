@@ -24,7 +24,7 @@ var templates ={
 //append to .curOnline ///
   activeUser: [
     '<div class="activeUsers">',
-    '<%=username%=>',
+    '<%=username%>',
     '</div>',
   ].join(""),
 
