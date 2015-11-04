@@ -30,7 +30,7 @@ var main ={
     events:function(){
 
 
-      $('body').on('click', 'button',function(e) {
+      $('section').on('click', '.subbut',function(e) {
         e.preventDefault();
         var messageText = $(this).siblings('input[name="message"]').val();
         var data ={
@@ -41,8 +41,6 @@ var main ={
         main.postMessage(data);
         // $('.generatedChat').remove();
         // main.grabMessages();
-
-        console.log("hello World");
         $(this).siblings('input[name="message"]').val(' ');
       });
       $('.textbox').keypress('input',function(e){
