@@ -11,6 +11,7 @@ var main ={
    init:function() {
      main.styling();
      main.events();
+
    },
 
    styling: function(){
@@ -56,6 +57,7 @@ var main ={
        e.preventDefault();
        $('.page1').addClass('hidden');
        $('.container').removeClass('hidden');
+       main.startFixedWindowAtBottom('chatfield');
        var userEntry = $(this).siblings('input[name="username"]').val();
        var avatarEntry = $(this).siblings('input[name="avatar"]').val();
      });
@@ -80,6 +82,7 @@ var main ={
  loadUsers:function(data){
    var tmpl = _.templates(templates.activeUsers);
    $('aside .users').append(tmpl(data));
+
    console.log(data);
  },
 
@@ -101,6 +104,7 @@ grabUsers:function(){
      data: user,
      success:function(data){
        console.log(data);
+
      },
      failure:function(data){
        console.log("You are a failure" + data);
@@ -145,6 +149,7 @@ grabMessages: function() {
    url: main.urlMessages,
    success: function(data) {
      main.loadMessages(data);
+
    },
    failure: function(data) {
      console.log("FAILURE: ", data);
