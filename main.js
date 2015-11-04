@@ -34,6 +34,7 @@ var main ={
       main.grabMessages();
       // main.deleteInSpace("56391d8e3802890300842c6e");
     },
+
   loadMessages:function(data){
     var html = ""
     var tmpl = _.template(templates.userInput);
