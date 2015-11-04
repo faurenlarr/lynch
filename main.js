@@ -4,19 +4,8 @@ $(document).ready(function() {
 
 
 var main ={
-     urlMessages: "https://tiny-tiny.herokuapp.com/collections/lynch/",
-     urlUsers:"https://tiny-tiny.herokuapp.com/collections/lynchUsers/",
-     message:{
-        username: "joshguion",
-        message: "hello, world",
-        avatar: "http://31.media.tumblr.com/fffd0f8677c5f75e47bfbaa9a17c44e9/tumblr_neyjbn8JGm1texwuzo1_400.gif",
-
-    },
-      users:{
-        name: "cglane",
-        avatar: "http://31.media.tumblr.com/fffd0f8677c5f75e47bfbaa9a17c44e9/tumblr_neyjbn8JGm1texwuzo1_400.gif",
-        status: "online",
-      },
+     urlMessages: "https://tiny-tiny.herokuapp.com/collections/lynchberg/",
+    //  urlUsers:"https://tiny-tiny.herokuapp.com/collections/lynchUsers/",
 
 
     init:function() {
@@ -25,9 +14,12 @@ var main ={
     },
 
     styling: function(){
+      main.grabMessages();
+
     },
 
     events:function(){
+
       main.grabMessages();
       // Edit.events ();
       $('.textbox').on('click', '.subbut',function(e) {
@@ -39,16 +31,19 @@ var main ={
           avatar: "http://31.media.tumblr.com/fffd0f8677c5f75e47bfbaa9a17c44e9/tumblr_neyjbn8JGm1texwuzo1_400.gif",
         };
         main.postMessage(data);
-        $('.generatedChat').remove();
-        main.grabMessages();
-        console.log("hello World");
+
         $(this).siblings('input[name="message"]').val(' ');
       });
-      $('.textbox').keypress('input',function(e){
+      $('.textbox').keypress('.message',function(e){
        if(e.which == 13){//Enter key pressed
-           $('button').click();//Trigger search button click event
+           $('.message').click();//Trigger search button click event
        }
-      });
+     });
+     $('.chatbox').on('click','.delete-button',function(){
+       var id = $(this).parent('div').attr('id');
+       main.deleteMessages(id);
+     });
+
 
       $('section').on('click', '.signInSubmit', function(e) {
         e.preventDefault();
@@ -64,13 +59,14 @@ var main ={
 
 
   loadMessages:function(data){
-
-    var html = "";
+    var html = " ";
     var tmpl = _.template(templates.userInput);
     _.each(data, function(el){
-    html += tmpl(el);
+      console.log(el);
+      html += tmpl(el);
   });
     $('.chatfield').html(html);
+
   },
 
   loadUsers:function(data){
@@ -103,11 +99,11 @@ grabUsers:function(){
       }
     });
   },
-  deletUsers:function(userId){
+  deleteUsers:function(userId){
       $.ajax({
-        url:main.urlUsers + userId,
+        url: main.urlUsers + userId,
         method: 'DELETE',
-        success:function(){
+        success:function(data){
           console.log(data + "deleted");
 
         },
@@ -138,7 +134,6 @@ grabMessages: function() {
     type: 'GET',
     url: main.urlMessages,
     success: function(data) {
-      console.log(data);
       main.loadMessages(data);
     },
     failure: function(data) {
@@ -154,10 +149,19 @@ deleteMessages: function(messageId) {
     success: function(data) {
       console.log("DELETED", data);
       var id = '#' + messageId;
-      $('id').remove();
+      $(id).remove();
     },
     failure: function(data) {
       console.log("ERROR", data);
+    }
+  });
+},
+deleteAll:function(){
+  $.ajax({
+    method: 'DELETE',
+    url:main.urlMessages,
+    success:function(){
+      console.log('all deleted');
     }
   });
 }
