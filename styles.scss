@@ -27,11 +27,16 @@ body {
   border-radius: 20px;
 
     .chatfield {
+
       height: 500px;
         overflow: scroll;
 
     }
 
+}
+
+.hidden {
+  display: none;
 }
 
 .textbox {
@@ -68,6 +73,7 @@ body {
   width:13%;
 }
 
+
 aside{
   text-align:center;
   .online{
@@ -79,6 +85,7 @@ aside{
   margin-top:5px;
   font-size:1.2em;
 }
+
 
 .usermessage {
   background-color: white;
