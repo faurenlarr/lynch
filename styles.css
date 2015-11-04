@@ -19,7 +19,7 @@ body {
   min-height: 550px;
   border-radius: 20px; }
   .chatbox .chatfield {
-    max-height: 500px;
+    height: 500px;
     overflow: scroll; }
 
 .textbox {
