@@ -54,6 +54,7 @@ aside {
   margin-top: 5px;
   font-size: 1.2em; }
 
+<<<<<<< HEAD
 .signIn {
   border-radius: 20px;
   background-color: #f9f2E6;
@@ -70,6 +71,8 @@ aside {
   margin: 2% auto;
   padding: 2%; }
 
+=======
+>>>>>>> 4d352b55a494d351a2dd751b44ac9407d3496110
 .usermessage {
   background-color: white;
   border-radius: 10px; }

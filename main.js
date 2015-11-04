@@ -21,6 +21,7 @@ var main ={
     events:function(){
 
     $('.textbox').on('click', '.subbut',function(e) {
+
         e.preventDefault();
         var messageText = $(this).siblings('input[name="message"]').val();
         var data ={
@@ -29,13 +30,19 @@ var main ={
           avatar: "http://31.media.tumblr.com/fffd0f8677c5f75e47bfbaa9a17c44e9/tumblr_neyjbn8JGm1texwuzo1_400.gif",
         };
         main.postMessage(data);
-        console.log("hello World");
+
         $(this).siblings('input[name="message"]').val(' ');
       });
       $('.textbox').keypress('input',function(e){
        if(e.which == 13){//Enter key pressed
            $('button').click();//Trigger search button click event
        }
+     });;
+     $('.chatbox').on('click','button',function(){
+       var id = $(this).parent('div').attr('id');
+       main.deleteMessages(id);
+     });
+    },
       });
 
       $('section').on('click', '.signInSubmit', function(e) {
@@ -53,13 +60,13 @@ var main ={
 
   loadMessages:function(data){
 
-    var html = "";
     var tmpl = _.template(templates.userInput);
     _.each(data, function(el){
       console.log(el);
       html += tmpl(el);
   });
     $('.chatfield').html(html);
+
   },
 
   loadUsers:function(data){
@@ -92,11 +99,11 @@ grabUsers:function(){
       }
     });
   },
-  deletUsers:function(userId){
+  deleteUsers:function(userId){
       $.ajax({
-        url:main.urlUsers + userId,
+        url: main.urlUsers + userId,
         method: 'DELETE',
-        success:function(){
+        success:function(data){
           console.log(data + "deleted");
 
         },
@@ -127,7 +134,6 @@ grabMessages: function() {
     type: 'GET',
     url: main.urlMessages,
     success: function(data) {
-      console.log(data);
       main.loadMessages(data);
     },
     failure: function(data) {
@@ -143,11 +149,20 @@ deleteMessages: function(messageId) {
     success: function(data) {
       console.log("DELETED", data);
       var id = '#' + messageId;
-      $('id').remove();
+      $(id).remove();
     },
     failure: function(data) {
       console.log("ERROR", data);
     }
   });
+},
+deleteAll:function(){
+  $.ajax({
+    method: 'DELETE',
+    url:main.urlMessages,
+    success:function(){
+      console.log('all deleted');
+    }
+  })
 }
 };
