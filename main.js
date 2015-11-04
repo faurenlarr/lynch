@@ -34,7 +34,7 @@ var main ={
         e.preventDefault();
         var messageText = $(this).siblings('input[name="message"]').val();
         var data ={
-          username: "cglane",
+          username: "lauren",
           message: messageText,
           avatar: "http://31.media.tumblr.com/fffd0f8677c5f75e47bfbaa9a17c44e9/tumblr_neyjbn8JGm1texwuzo1_400.gif",
         };
