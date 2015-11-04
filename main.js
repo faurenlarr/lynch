@@ -4,9 +4,8 @@ $(document).ready(function() {
 
 
 var main ={
-    urlMessages: "https://tiny-tiny.herokuapp.com/collections/lynchberg/",
-    urlUsers:"https://tiny-tiny.herokuapp.com/collections/lynchUser/",
-
+     urlMessages: "https://tiny-tiny.herokuapp.com/collections/lynchberg/",
+     urlUsers:"https://tiny-tiny.herokuapp.com/collections/lynchBros/",
 
    init:function() {
      main.styling();
@@ -14,10 +13,10 @@ var main ={
 
    },
 
-   styling: function(){
-     main.grabMessages();
-
+    styling: function(){
+      main.grabMessages();
    },
+
 
    events:function(){
 
@@ -52,6 +51,20 @@ var main ={
       main.deleteMessages(id);
     });
 
+      $('section').on('click', '.signInSubmit', function(e) {
+        e.preventDefault();
+        var userEntry = $(this).siblings('input[name="username"]').val();
+        var avatarEntry = $(this).siblings('input[name="avatar"]').val();
+        //check if user exists in database if not add to database
+        main.checkUsers(userEntry,avatarEntry);
+        $('.page1').addClass('hidden');
+        $('.container').removeClass('hidden');
+        main.grabUsers();
+
+            });
+   },
+
+
 
      $('section').on('click', '.signInSubmit', function(e) {
        e.preventDefault();
@@ -62,6 +75,7 @@ var main ={
        var avatarEntry = $(this).siblings('input[name="avatar"]').val();
      });
   },
+
 
 
   startFixedWindowAtBottom: function(item) {
@@ -79,24 +93,86 @@ var main ={
 
  },
 
- loadUsers:function(data){
-   var tmpl = _.templates(templates.activeUsers);
-   $('aside .users').append(tmpl(data));
 
-   console.log(data);
- },
+  loadUsers:function(data){
+    var tmpl = _.template(templates.activeUser);
+    var array = [];
+    _.each(data,function(el){
+      $('aside .curOnline').append(tmpl(el));
+      console.log("load users");
+    })
+
+  },
+
+
 
 
 grabUsers:function(){
    $.ajax({
      url:main.urlUsers,
      method:'GET',
-     success:function(users){
-       console.log(users);
-       main.loadUsers(users);
+     success:function(user){
+       main.loadUsers(user);
      }
    });
 },
+checkUsers:function(inputUsername,avatarEntry){
+  var data = {
+    username : inputUsername,
+    avatar : avatarEntry,
+    status: "active",
+  }
+  var bool = true;
+  $.ajax({
+    url:main.urlUsers,
+    method:'GET',
+    success:function(users){
+      _.each(users,function(el){
+        if(el.username === inputUsername){
+          bool = false;
+        }
+      });
+      if(bool === true){
+        console.log("you may add me to database");
+        main.postUsers(data);
+        localStorage.setItem('username',inputUsername);
+      }else{
+        console.log("try again");
+      }
+    },
+    failure:function(users){
+      console.log("You are a looser");
+    }
+  });
+
+},
+  postUsers:function(user){
+    $.ajax({
+      url:main.urlUsers,
+      method:'POST',
+      data: user,
+      success:function(data){
+        console.log(data);
+      },
+      failure:function(data){
+        console.log("You are a failure" + data);
+      }
+    });
+  },
+  deleteUsers:function(userId){
+      $.ajax({
+        url: main.urlUsers + userId,
+        method: 'DELETE',
+        success:function(data){
+          console.log(data + "deleted");
+
+        },
+        failure:function(){
+          console.log(data+ " :not deleted, idiot");
+        }
+
+      });
+  },
  postUsers:function(user){
    $.ajax({
      url:main.urlUsers,
