@@ -16,8 +16,6 @@ var main ={
         name: "cglane",
         avatar: "http://31.media.tumblr.com/fffd0f8677c5f75e47bfbaa9a17c44e9/tumblr_neyjbn8JGm1texwuzo1_400.gif",
         status: "online",
-        sign: "virgo",
-
       },
 
 
@@ -27,15 +25,30 @@ var main ={
     },
 
     styling: function(){
-
     },
 
     events:function(){
       main.grabMessages();
-      // main.deleteInSpace("56391d8e3802890300842c6e");
+
+      $('body').on('click', 'button',function(e) {
+        e.preventDefault();
+        var messageText = $(this).siblings('input[name="message"]').val();
+        var data ={
+          username: "cglane",
+          message: messageText,
+          avatar: "http://31.media.tumblr.com/fffd0f8677c5f75e47bfbaa9a17c44e9/tumblr_neyjbn8JGm1texwuzo1_400.gif",
+        };
+        main.postMessage(data);
+        $('.generatedChat').remove();
+        main.grabMessages();
+        console.log("hello World");
+        $(this).siblings('input[name="message"]').val(' ');
+      });
     },
+
   loadMessages:function(data){
-    var html = ""
+
+    var html = "";
     var tmpl = _.template(templates.userInput);
     _.each(data, function(el){
     html += tmpl(el);
@@ -88,13 +101,15 @@ grabUsers:function(){
       });
   },
 
-  postMessage: function(bitter) {
+  postMessage: function(message) {
   $.ajax({
     url: main.urlMessages,
     method: 'POST',
-    data: bitter,
+    data: message,
     success: function(resp) {
       console.log(resp);
+      var tmpl = _.template(templates.userInput);
+      $('.chatfield').append(tmpl(resp));
     },
     failure: function(resp) {
       console.log("FAILURE", resp);
@@ -106,6 +121,7 @@ grabMessages: function() {
     type: 'GET',
     url: main.urlMessages,
     success: function(data) {
+      console.log(data);
       main.loadMessages(data);
     },
     failure: function(data) {
@@ -114,12 +130,14 @@ grabMessages: function() {
   });
 },
 
-deleteInSpace: function(messageId) {
+deleteMessages: function(messageId) {
   $.ajax({
     method: 'DELETE',
     url: main.urlMessages + messageId,
     success: function(data) {
       console.log("DELETED", data);
+      var id = '#' + messageId;
+      $('id').remove();
     },
     failure: function(data) {
       console.log("ERROR", data);
