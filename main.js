@@ -34,9 +34,9 @@ var main ={
 
         $(this).siblings('input[name="message"]').val(' ');
       });
-      $('.textbox').keypress('.message',function(e){
+      $('body').keypress(function(e){
        if(e.which == 13){//Enter key pressed
-           $('.message').click();//Trigger search button click event
+           $('.subbut').click();//Trigger search button click event
        }
      });
      $('.chatbox').on('click','.delete-button',function(){
