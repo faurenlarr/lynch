@@ -28,10 +28,12 @@ body {
 
 
 
+
     .chatfield {
 
       height: 500px;
         overflow: scroll;
+
 
    }
 
@@ -73,7 +75,6 @@ aside{
  text-align:center;
  .online{
    border-bottom:1px solid black;
-
  }
 }
 .activeUsers{
@@ -92,10 +93,11 @@ aside{
   margin-top: 10px;
 
 }
+
 .signInSubmit {
  margin-left: 41%;
 }
-//
+
 .username, .avatar, .submit {
 
   display: block;
@@ -117,6 +119,7 @@ aside{
  background-color: white;
  border-radius: 10px;
 }
+
 .title {
   color: white;
 text-align: center;
