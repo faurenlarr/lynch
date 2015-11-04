@@ -51,7 +51,6 @@ var main ={
      });;
      $('.chatbox').on('click','button',function(){
        var id = $(this).parent('div').attr('id');
-       console.log(id);
        main.deleteMessages(id);
      });
     },
