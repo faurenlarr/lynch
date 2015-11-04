@@ -4,7 +4,7 @@ $(document).ready(function() {
 
 
 var main ={
-     urlMessages: "https://tiny-tiny.herokuapp.com/collections/lynch/",
+     urlMessages: "https://tiny-tiny.herokuapp.com/collections/lynchs/",
      urlUsers:"https://tiny-tiny.herokuapp.com/collections/lynchUsers/",
      message:{
         username: "cglane",
@@ -22,7 +22,6 @@ var main ={
     init:function() {
       main.styling();
       main.events();
-      main.deleteAll();
     },
 
     styling: function(){
@@ -35,7 +34,6 @@ var main ={
         e.preventDefault();
         var messageText = $(this).siblings('input[name="message"]').val();
         var data ={
-          _id: "",
           username: "lauren",
           message: messageText,
           avatar: "http://31.media.tumblr.com/fffd0f8677c5f75e47bfbaa9a17c44e9/tumblr_neyjbn8JGm1texwuzo1_400.gif",
@@ -128,7 +126,6 @@ grabMessages: function() {
     type: 'GET',
     url: main.urlMessages,
     success: function(data) {
-      console.log(data);
       main.loadMessages(data);
     },
     failure: function(data) {
