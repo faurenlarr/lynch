@@ -18,7 +18,7 @@ body {
    border-radius: 20px;
    width: 25%;
    margin-left: 20px;
-   overflow: scroll;
+  //  overflow: scroll;
 
 }
 .chatbox {
@@ -27,9 +27,13 @@ body {
  border-radius: 20px;
 
 
-   .chatfield {
-     height: 500px;
-       overflow: scroll;
+
+    .chatfield {
+
+      height: 500px;
+        overflow-y: scroll;
+
+
    }
 
 }
@@ -47,7 +51,6 @@ body {
 .generatedChat {
  margin-top: 50px;
 }
-
 
 .userid {
    text-align:center;
@@ -79,12 +82,15 @@ aside{
 }
 
 .signIn {
- border-radius: 20px;
- background-color: #f9f2E6 ;
- height: 200px;
- width: 400px;
- margin: 15% auto;
- padding-top: 30px;
+
+  border-radius: 20px;
+  background-color: #f9f2E6;
+  height: 200px;
+  width: 400px;
+  margin: 15% auto;
+  padding-top: 30px;
+  margin-top: 10px;
+
 }
 
 .signInSubmit {
@@ -92,6 +98,18 @@ aside{
 }
 
 .username, .avatar, .submit {
+
+  display: block;
+  margin: 2% auto;
+  padding: 2%;}
+
+.usermessage {
+  background-color: white;
+  border-radius: 10px;
+}
+
+.offline {
+  margin-top: 268px;
  display: block;
  margin: 2% auto;
  padding: 2%;}
@@ -99,4 +117,15 @@ aside{
 .usermessage {
  background-color: white;
  border-radius: 10px;
+}
+
+.title {
+  color: white;
+text-align: center;
+  font-size: 100px;
+
+}
+
+.page1 {
+  margin-top: 120px;
 }
