@@ -59,6 +59,7 @@ var main ={
         main.checkUsers(userEntry,avatarEntry);
         $('.page1').addClass('hidden');
         $('.container').removeClass('hidden');
+         main.startFixedWindowAtBottom('chatfield');
         main.grabUsers();
 
             });
@@ -66,15 +67,15 @@ var main ={
 
 
 
-     $('section').on('click', '.signInSubmit', function(e) {
-       e.preventDefault();
-       $('.page1').addClass('hidden');
-       $('.container').removeClass('hidden');
-       main.startFixedWindowAtBottom('chatfield');
-       var userEntry = $(this).siblings('input[name="username"]').val();
-       var avatarEntry = $(this).siblings('input[name="avatar"]').val();
-     });
-  },
+  //    $('section').on('click','.signInSubmit', function(e) {
+  //      e.preventDefault();
+  //      $('.page1').addClass('hidden');
+  //      $('.container').removeClass('hidden');
+  //      main.startFixedWindowAtBottom('chatfield');
+  //      var userEntry = $(this).siblings('input[name="username"]').val();
+  //      var avatarEntry = $(this).siblings('input[name="avatar"]').val();
+  //    });
+  // },
 
 
 
