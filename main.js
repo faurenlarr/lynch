@@ -21,6 +21,7 @@ var main ={
    events:function(){
 
 
+
       main.grabMessages();
       // Edit.events ();
       $('.textbox').on('click', '.subbut',function(e) {
@@ -31,20 +32,20 @@ var main ={
           message: messageText,
           avatar: "http://31.media.tumblr.com/fffd0f8677c5f75e47bfbaa9a17c44e9/tumblr_neyjbn8JGm1texwuzo1_400.gif",
         };
+
         main.postMessage(data);
 
+
         $(this).siblings('input[name="message"]').val(' ');
+
       });
-      $('body').keypress(function(e){
-       if(e.which == 13){//Enter key pressed
-           $('.subbut').click();//Trigger search button click event
-       }
-     });
-     $('.textbox').keypress(function(e){
-      if(e.which == 13){//Enter key pressed
-          $('.subbut').click();//Trigger search button click event
-      }
-    });
+
+
+    //  $('.textbox').keypress(function(e){
+    //   if(e.which == 13){//Enter key pressed
+    //       $('.subbut').click();//Trigger search button click event
+    //   }
+    // });
     $('.chatbox').on('click','.delete-button',function(){
       var id = $(this).parent('div').attr('id');
       main.deleteMessages(id);
@@ -61,7 +62,10 @@ var main ={
   },
 
 
-
+  startFixedWindowAtBottom: function(item) {
+    var div = document.getElementsByClassName(item);
+    div[0].scrollTop = div[0].scrollHeight;
+  },
 
  loadMessages:function(data){
    var html = " ";
@@ -127,6 +131,8 @@ grabUsers:function(){
      console.log(resp);
      var tmpl = _.template(templates.userInput);
      $('.chatfield').append(tmpl(resp));
+     main.startFixedWindowAtBottom('chatfield');
+
    },
    failure: function(resp) {
      console.log("FAILURE", resp);

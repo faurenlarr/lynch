@@ -12,8 +12,7 @@ body {
   height: 550px;
   border-radius: 20px;
   width: 25%;
-  margin-left: 20px;
-  overflow: scroll; }
+  margin-left: 20px; }
 
 .chatbox {
   background-color: #f9f2e6;
@@ -21,7 +20,7 @@ body {
   border-radius: 20px; }
   .chatbox .chatfield {
     height: 500px;
-    overflow: scroll; }
+    overflow-y: scroll; }
 
 .hidden {
   display: none; }
