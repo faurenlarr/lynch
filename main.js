@@ -5,7 +5,7 @@ $(document).ready(function() {
 
 var main ={
      urlMessages: "https://tiny-tiny.herokuapp.com/collections/lynchberg/",
-     urlUsers:"https://tiny-tiny.herokuapp.com/collections/lynchUsers/",
+     urlUsers:"https://tiny-tiny.herokuapp.com/collections/lynchBros/",
 
    init:function() {
      main.styling();
@@ -72,6 +72,7 @@ var main ={
 
   loadUsers:function(data){
     var tmpl = _.template(templates.activeUser);
+    var array = [];
     _.each(data,function(el){
       $('aside .curOnline').append(tmpl(el));
       console.log("load users");
@@ -94,6 +95,7 @@ checkUsers:function(inputUsername,avatarEntry){
   var data = {
     username : inputUsername,
     avatar : avatarEntry,
+    status: "active",
   }
   var bool = true;
   $.ajax({
@@ -108,6 +110,7 @@ checkUsers:function(inputUsername,avatarEntry){
       if(bool === true){
         console.log("you may add me to database");
         main.postUsers(data);
+        localStorage.setItem('username',inputUsername);
       }else{
         console.log("try again");
       }
