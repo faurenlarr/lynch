@@ -44,6 +44,11 @@ var main ={
         console.log("hello World");
         $(this).siblings('input[name="message"]').val(' ');
       });
+      $('.textbox').keypress('inpput',function(e){
+       if(e.which == 13){//Enter key pressed
+           $('button').click();//Trigger search button click event
+       }
+   });
     },
 
   loadMessages:function(data){
