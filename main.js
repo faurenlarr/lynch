@@ -30,7 +30,7 @@ var main ={
     events:function(){
       main.grabMessages();
 
-      $('body').on('click', 'button',function(e) {
+      $('.textbox').on('click', '.subbut',function(e) {
         e.preventDefault();
         var messageText = $(this).siblings('input[name="message"]').val();
         var data ={
