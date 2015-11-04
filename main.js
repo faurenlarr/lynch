@@ -5,7 +5,7 @@ $(document).ready(function() {
 
 var main ={
      urlMessages: "https://tiny-tiny.herokuapp.com/collections/lynchberg/",
-     urlUsers:"https://tiny-tiny.herokuapp.com/collections/lynchUser/",
+     urlUsers:"https://tiny-tiny.herokuapp.com/collections/lynchUsers/",
 
    init:function() {
      main.styling();
@@ -14,9 +14,6 @@ var main ={
 
     styling: function(){
       main.grabMessages();
-      main.grabUsers();
-
-
    },
 
 
@@ -45,20 +42,16 @@ var main ={
       main.deleteMessages(id);
     });
 
-<<<<<<< HEAD
       $('section').on('click', '.signInSubmit', function(e) {
         e.preventDefault();
         var userEntry = $(this).siblings('input[name="username"]').val();
         var avatarEntry = $(this).siblings('input[name="avatar"]').val();
-        var user = {
-          username : userEntry,
-          avatar : avatarEntry
-        };
-
-        main.postUsers(user);
-        console.log(user);
+        //check if user exists in database if not add to database
+        main.checkUsers(userEntry,avatarEntry);
         $('.page1').addClass('hidden');
         $('.container').removeClass('hidden');
+        main.grabUsers();
+
             });
    },
 
@@ -78,9 +71,12 @@ var main ={
  },
 
   loadUsers:function(data){
-    var tmpl = _.templates(templates.activeUsers);
-    $('aside .users').append(tmpl(data));
-    console.log(data);
+    var tmpl = _.template(templates.activeUser);
+    _.each(data,function(el){
+      $('aside .curOnline').append(tmpl(el));
+      console.log("load users");
+    })
+
   },
 
 
@@ -89,16 +85,38 @@ grabUsers:function(){
    $.ajax({
      url:main.urlUsers,
      method:'GET',
-     success:function(users){
-       console.log(users);
-       main.loadUsers(users);
+     success:function(user){
+       main.loadUsers(user);
      }
    });
 },
-checkUsers:function(){
+checkUsers:function(inputUsername,avatarEntry){
+  var data = {
+    username : inputUsername,
+    avatar : avatarEntry,
+  }
+  var bool = true;
   $.ajax({
-
+    url:main.urlUsers,
+    method:'GET',
+    success:function(users){
+      _.each(users,function(el){
+        if(el.username === inputUsername){
+          bool = false;
+        }
+      });
+      if(bool === true){
+        console.log("you may add me to database");
+        main.postUsers(data);
+      }else{
+        console.log("try again");
+      }
+    },
+    failure:function(users){
+      console.log("You are a looser");
+    }
   });
+
 },
   postUsers:function(user){
     $.ajax({
