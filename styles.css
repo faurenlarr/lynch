@@ -1,26 +1,32 @@
+body {
+  background-color: #88b8fc;
+  font-family: 'Inconsolata';
+  font-weight: bold; }
+
 .container {
   margin-top: 50px;
-  border: 2px solid black; }
+  border-radius: 20px; }
 
 .users {
-  background-color: yellow;
-  min-height: 500px; }
+  background-color: #f9f2e6;
+  height: 550px;
+  border-radius: 20px;
+  width: 25%;
+  margin-left: 20px; }
 
 .chatbox {
-  background-color: violet;
-  min-height: 500px; }
+  background-color: #f9f2e6;
+  min-height: 550px;
+  border-radius: 20px; }
   .chatbox .chatfield {
-    min-height: 500px; }
+    max-height: 500px;
+    overflow: scroll; }
 
 .textbox {
-  background-color: black;
   padding: 2px; }
 
-.username {
-  background-color: orange; }
-
-.usermessage {
-  background-color: pink; }
+.generatedChat {
+  margin-top: 50px; }
 
 .userid {
   text-align: center; }
