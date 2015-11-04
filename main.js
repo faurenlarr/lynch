@@ -49,12 +49,7 @@ var main ={
        if(e.which == 13){//Enter key pressed
            $('button').click();//Trigger search button click event
        }
-<<<<<<< HEAD
    });
-         main.grabMessages();
-    },
-=======
-      });
 
       $('section').on('click', '.signInSubmit', function(e) {
         e.preventDefault();
@@ -66,9 +61,6 @@ var main ={
    },
 
 
-
-
->>>>>>> 8d55a4e5422912c6e6fde68739961f6fa7e1652c
 
   loadMessages:function(data){
 
@@ -86,10 +78,6 @@ var main ={
 
     var tmpl = _.templates(templates.messageTemplate);
     $('aside .users').append(tmpl(data));
-<<<<<<< HEAD
-
-=======
->>>>>>> 8d55a4e5422912c6e6fde68739961f6fa7e1652c
     console.log(data);
   },
 
