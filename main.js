@@ -25,11 +25,11 @@ var main ={
     },
 
     styling: function(){
-
     },
 
     events:function(){
       main.grabMessages();
+
       $('body').on('click', 'button',function(e) {
         e.preventDefault();
         var messageText = $(this).siblings('input[name="message"]').val();
@@ -39,9 +39,10 @@ var main ={
           avatar: "http://31.media.tumblr.com/fffd0f8677c5f75e47bfbaa9a17c44e9/tumblr_neyjbn8JGm1texwuzo1_400.gif",
         };
         main.postMessage(data);
-        var tmpl = _.template(templates.userInput);
-        $('.chatfield').append(tmpl(data));
+        $('.generatedChat').remove();
+        main.grabMessages();
         console.log("hello World");
+        $(this).siblings('input[name="message"]').val(' ');
       });
     },
 
