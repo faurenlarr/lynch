@@ -1,28 +1,31 @@
 body {
-  background-color: #ffc75d; }
+  background-color: #88b8fc;
+  font-family: 'Inconsolata'; }
 
 .container {
   margin-top: 50px;
-  border: 2px solid white; }
+  border-radius: 20px; }
 
 .users {
-  background-color: #88B8fc;
-  height: 550px; }
+  background-color: #f9f2e6;
+  height: 550px;
+  border-radius: 20px;
+  width: 25%;
+  margin-left: 20px; }
 
 .chatbox {
   background-color: #f9f2e6;
-  min-height: 550px; }
+  min-height: 550px;
+  border-radius: 20px; }
   .chatbox .chatfield {
-    min-height: 500px; }
+    max-height: 500px;
+    overflow: scroll; }
 
 .textbox {
   padding: 2px; }
 
-.username {
-  background-color: orange; }
-
-.usermessage {
-  background-color: pink; }
+.generatedChat {
+  margin-top: 50px; }
 
 .userid {
   text-align: center; }
