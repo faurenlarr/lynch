@@ -22,6 +22,7 @@ var main ={
     init:function() {
       main.styling();
       main.events();
+      main.deleteAll();
     },
 
     styling: function(){
@@ -30,35 +31,37 @@ var main ={
     events:function(){
       main.grabMessages();
 
-      $('body').on('click', 'button',function(e) {
+      $('.textbox').on('click', '.submit',function(e) {
         e.preventDefault();
         var messageText = $(this).siblings('input[name="message"]').val();
         var data ={
+          _id: "",
           username: "cglane",
           message: messageText,
           avatar: "http://31.media.tumblr.com/fffd0f8677c5f75e47bfbaa9a17c44e9/tumblr_neyjbn8JGm1texwuzo1_400.gif",
         };
         main.postMessage(data);
-        $('.generatedChat').remove();
-        main.grabMessages();
-        console.log("hello World");
+            console.log("hello World");
         $(this).siblings('input[name="message"]').val(' ');
       });
-      $('.textbox').keypress('inpput',function(e){
+      $('.textbox').keypress('input',function(e){
        if(e.which == 13){//Enter key pressed
            $('button').click();//Trigger search button click event
        }
-   });
+     });;
+     $('.chatbox').on('click','button',function(){
+       var id = $(this).parent('div').attr('id');
+       console.log(id);
+       main.deleteMessages(id);
+     });
     },
 
   loadMessages:function(data){
 
-    var html = "";
     var tmpl = _.template(templates.userInput);
-    _.each(data, function(el){
-    html += tmpl(el);
-  });
-    $('.chatfield').html(html);
+      $('.chatfield').append(tmpl(data));
+
+
   },
 
   loadUsers:function(data){
@@ -91,11 +94,11 @@ grabUsers:function(){
       }
     });
   },
-  deletUsers:function(userId){
+  deleteUsers:function(userId){
       $.ajax({
-        url:main.urlUsers + userId,
+        url: main.urlUsers + userId,
         method: 'DELETE',
-        success:function(){
+        success:function(data){
           console.log(data + "deleted");
 
         },
@@ -142,11 +145,20 @@ deleteMessages: function(messageId) {
     success: function(data) {
       console.log("DELETED", data);
       var id = '#' + messageId;
-      $('id').remove();
+      $(id).remove();
     },
     failure: function(data) {
       console.log("ERROR", data);
     }
   });
+},
+deleteAll:function(){
+  $.ajax({
+    method: 'DELETE',
+    url:main.urlMessages,
+    success:function(){
+      console.log('all deleted');
+    }
+  })
 }
 };
